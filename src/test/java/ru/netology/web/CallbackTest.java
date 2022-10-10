@@ -1,5 +1,6 @@
 package ru.netology.web;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +20,7 @@ public class CallbackTest {
 
     @BeforeAll
     static void setupClass() {
-        System.setProperty("webdriver.chrome.driver","draver/mac/chromedriver");
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
@@ -38,10 +39,9 @@ public class CallbackTest {
 
         driver.findElement(By.cssSelector("[type = \"text\"]")).sendKeys("Мария");
         driver.findElement(By.cssSelector("[type = \"tel\"]")).sendKeys("+79992186242");
-
         driver.findElement(By.cssSelector(".checkbox__box")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
         String text = driver.findElement(By.className("paragraph")).getText();
-        assertEquals("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text);
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.",text.trim());
     }
 }
