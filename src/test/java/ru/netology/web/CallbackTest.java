@@ -36,7 +36,7 @@ public class CallbackTest {
     void test(){
         driver.get("http://localhost:9999");
 
-        driver.findElement(By.cssSelector("[type = \"text\"]")).sendKeys("Маша");
+        driver.findElement(By.cssSelector("[type = \"text\"]")).sendKeys("Мария");
         driver.findElement(By.cssSelector("[type = \"tel\"]")).sendKeys("+79992186242");
 
         driver.findElement(By.cssSelector(".checkbox__box")).click();
